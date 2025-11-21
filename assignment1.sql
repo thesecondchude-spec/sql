@@ -152,7 +152,7 @@ select
 	distinct 
 	customer_id,
 	product_name,
-	strftime('%M', market_date) as mon,---- this did not produced the desired result hence the substring used
+	strftime('%m', market_date) as mon,---- this did not produced the desired result hence the substring used
 	substr(market_date,6,2) as month,
 	substr(market_date,1,4) as year,
 	strftime('%Y', market_date) as year2
@@ -181,7 +181,7 @@ customer_last_name,
 customer_id,
 sum(total)
  from base
-where substr(market_date,6,2) ='04'
+where strftime('%m', market_date) ='04'
 group by customer_last_name,
 customer_id
 HINTS: you will need to AGGREGATE, GROUP BY, and filter...
